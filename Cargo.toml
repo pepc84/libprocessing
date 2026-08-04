@@ -8,7 +8,7 @@ autoexamples = false
 workspace = true
 
 [features]
-default = ["wayland"]
+default = ["wayland", "x11"]
 wayland = ["processing_render/wayland"]
 x11 = ["processing_render/x11"]
 webcam = ["dep:processing_webcam"]
