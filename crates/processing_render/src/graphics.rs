@@ -31,6 +31,7 @@ use crate::{
     render::{
         BATCH_INDEX_STEP, RenderState,
         command::{CommandBuffer, DrawCommand},
+        filter,
     },
     surface::Surface,
 };
@@ -493,6 +494,10 @@ pub fn flush(app: &mut App, entity: Entity) -> Result<()> {
     app.update();
     graphics_mut!(app, entity).remove::<Flush>();
     Ok(())
+}
+
+pub fn apply_filter(app: &mut App, graphics: Entity, filter: Entity) -> Result<()> {
+    filter::apply(app, graphics, filter)
 }
 
 pub fn present(app: &mut App, entity: Entity) -> Result<()> {

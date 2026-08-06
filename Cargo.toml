@@ -264,6 +264,10 @@ path = "examples/text.rs"
 name = "text_3d"
 path = "examples/text_3d.rs"
 
+[[example]]
+name = "filter"
+path = "examples/filter.rs"
+
 [profile.wasm-release]
 inherits = "release"
 opt-level = "z"
