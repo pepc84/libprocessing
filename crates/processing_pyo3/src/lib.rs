@@ -426,7 +426,8 @@ mod mewnala {
         }
     }
 
-    // color constructors live at module level: a `color` submodule conflicted with `color()`
+    // top-level so `from mewnala import *` exposes hsva/srgb/etc. directly;
+    // a `color` submodule would clash with the `color()` function
 
     #[pyfunction]
     fn color_hex(s: &str) -> PyResult<PyColor> {
@@ -888,7 +889,7 @@ mod mewnala {
             Ok(())
         });
 
-        // tear the app down here while the TLS is still alive; the eager
+        // tear down the app while the thread-local is still alive; the eager
         // TLS destructor aborts inside a Bevy resource drop
         let _ = ::processing::exit(0);
 
@@ -1095,16 +1096,6 @@ mod mewnala {
             &*particles.extract::<PyRef<super::particles::Particles>>()?,
             &*geometry.extract::<PyRef<Geometry>>()?,
         )
-    }
-
-    #[pyfunction]
-    fn kernel_noise() -> PyResult<Compute> {
-        super::particles::kernel_noise()
-    }
-
-    #[pyfunction]
-    fn kernel_transform() -> PyResult<Compute> {
-        super::particles::kernel_transform()
     }
 
     #[pyfunction(name = "color")]
