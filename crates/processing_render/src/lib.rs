@@ -1519,7 +1519,8 @@ pub fn poll_for_sketch_updates() -> error::Result<Option<sketch::Sketch>> {
         Ok(app
             .world_mut()
             .run_system_cached(sketch::sketch_update_handler)
-            .unwrap())
+            .ok()
+            .flatten())
     })
 }
 
