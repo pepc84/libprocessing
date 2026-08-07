@@ -2951,6 +2951,82 @@ pub extern "C" fn processing_material_set_custom_blend_mode(
     });
 }
 
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_graphics_apply_filter(graphics_id: u64, filter_id: u64) {
+    error::clear_error();
+    error::check(|| {
+        graphics_apply_filter(Entity::from_bits(graphics_id), Entity::from_bits(filter_id))
+    });
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_create(shader_id: u64) -> u64 {
+    error::clear_error();
+    error::check(|| filter_create(Entity::from_bits(shader_id)))
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_destroy(filter_id: u64) {
+    error::clear_error();
+    error::check(|| filter_destroy(Entity::from_bits(filter_id)));
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_set_passes(filter_id: u64, passes: u32) {
+    error::clear_error();
+    error::check(|| filter_set_passes(Entity::from_bits(filter_id), passes));
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_blur() -> u64 {
+    error::clear_error();
+    error::check(|| filter_blur()).map(|e| e.to_bits()).unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_invert() -> u64 {
+    error::clear_error();
+    error::check(|| filter_invert()).map(|e| e.to_bits()).unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_gray() -> u64 {
+    error::clear_error();
+    error::check(|| filter_gray()).map(|e| e.to_bits()).unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_threshold() -> u64 {
+    error::clear_error();
+    error::check(|| filter_threshold()).map(|e| e.to_bits()).unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_posterize() -> u64 {
+    error::clear_error();
+    error::check(|| filter_posterize()).map(|e| e.to_bits()).unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_opaque() -> u64 {
+    error::clear_error();
+    error::check(|| filter_opaque()).map(|e| e.to_bits()).unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_erode() -> u64 {
+    error::clear_error();
+    error::check(|| filter_erode()).map(|e| e.to_bits()).unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn processing_filter_dilate() -> u64 {
+    error::clear_error();
+    error::check(|| filter_dilate()).map(|e| e.to_bits()).unwrap_or(0)
+}
+
 /// Create a shader from WGSL source.
 ///
 /// # Safety
