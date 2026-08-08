@@ -2982,49 +2982,65 @@ pub extern "C" fn processing_filter_set_passes(filter_id: u64, passes: u32) {
 #[unsafe(no_mangle)]
 pub extern "C" fn processing_filter_blur() -> u64 {
     error::clear_error();
-    error::check(|| filter_blur()).map(|e| e.to_bits()).unwrap_or(0)
+    error::check(|| filter_blur())
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn processing_filter_invert() -> u64 {
     error::clear_error();
-    error::check(|| filter_invert()).map(|e| e.to_bits()).unwrap_or(0)
+    error::check(|| filter_invert())
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn processing_filter_gray() -> u64 {
     error::clear_error();
-    error::check(|| filter_gray()).map(|e| e.to_bits()).unwrap_or(0)
+    error::check(|| filter_gray())
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn processing_filter_threshold() -> u64 {
     error::clear_error();
-    error::check(|| filter_threshold()).map(|e| e.to_bits()).unwrap_or(0)
+    error::check(|| filter_threshold())
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn processing_filter_posterize() -> u64 {
     error::clear_error();
-    error::check(|| filter_posterize()).map(|e| e.to_bits()).unwrap_or(0)
+    error::check(|| filter_posterize())
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn processing_filter_opaque() -> u64 {
     error::clear_error();
-    error::check(|| filter_opaque()).map(|e| e.to_bits()).unwrap_or(0)
+    error::check(|| filter_opaque())
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn processing_filter_erode() -> u64 {
     error::clear_error();
-    error::check(|| filter_erode()).map(|e| e.to_bits()).unwrap_or(0)
+    error::check(|| filter_erode())
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn processing_filter_dilate() -> u64 {
     error::clear_error();
-    error::check(|| filter_dilate()).map(|e| e.to_bits()).unwrap_or(0)
+    error::check(|| filter_dilate())
+        .map(|e| e.to_bits())
+        .unwrap_or(0)
 }
 
 /// Create a shader from WGSL source.
