@@ -876,8 +876,7 @@ mod mewnala {
                 sync_globals(module, &globals)?;
 
                 draw_fn_ref
-                    .call0()
-                    .map_err(|e| PyRuntimeError::new_err(format!("{e}")))?;
+                    .call0()?;
 
                 get_graphics(module)?
                     .ok_or_else(|| PyRuntimeError::new_err("call size() first"))?
